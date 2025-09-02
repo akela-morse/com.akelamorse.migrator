@@ -1,0 +1,18 @@
+{
+    "name": "Migrator.Editor",
+    "rootNamespace": "MigratorEditor",
+    "references": [
+        "GUID:ec2e7275f50c6f340ad4febbc67c854e"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

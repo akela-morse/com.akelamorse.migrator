@@ -1,0 +1,14 @@
+{
+    "name": "com.akelamorse.migrator",
+    "version": "1.0.0",
+    "displayName": "Migrator",
+    "description": "Helper tool for Unity to refactor and migrate components",
+    "repository": {
+        "url": "https://github.com/akela-morse/com.akelamorse.akelacore.git"
+    },
+    "unity": "2021.3",
+    "author": {
+        "name": "Akela Morse",
+        "email": "akela.morse@gmail.com"
+    }
+}
