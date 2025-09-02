@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace AkelaToolsEditor
+namespace MigratorEditor
 {
 	public interface IMigrationOperationStrategy
 	{

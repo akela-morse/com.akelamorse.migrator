@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AkelaTools
+namespace Migrator
 {
     [AttributeUsage(AttributeTargets.Field)]
     public sealed class MigrateFieldAttribute : Attribute
@@ -14,6 +14,6 @@ namespace AkelaTools
 
 		public string TargetField => _targetField;
 
-        public Type Strategy { get; set; }
+        public string Strategy { get; set; }
     }
 }

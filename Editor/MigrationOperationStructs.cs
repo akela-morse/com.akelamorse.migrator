@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AkelaToolsEditor
+namespace MigratorEditor
 {
 	public struct UpgradablePrefab
 	{
@@ -24,6 +24,13 @@ namespace AkelaToolsEditor
 		public bool isPrefabInstance;
 		public bool isPrefabVariant;
 	}
+
+    public struct UpgradableScriptableObject
+    {
+        public string path;
+        public Type type;
+        public List<UpgradableField> upgradableFields;
+    }
 
 	public struct UpgradableField
 	{

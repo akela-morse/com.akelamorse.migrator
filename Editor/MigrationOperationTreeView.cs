@@ -4,13 +4,18 @@ using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
-namespace AkelaToolsEditor
+namespace MigratorEditor
 {
 	public class MigrationOperationTreeView : TreeView<int>
 	{
 		private readonly List<TreeViewItem<int>> _data;
 
-		public MigrationOperationTreeView(TreeViewState<int> state, in IList<UpgradableScene> scenes, in IList<UpgradablePrefab> prefabs) : base(state)
+		public MigrationOperationTreeView(
+            TreeViewState<int> state,
+            in IList<UpgradableScene> scenes,
+            in IList<UpgradablePrefab> prefabs,
+            in IList<UpgradableScriptableObject> scriptableObjects
+        ) : base(state)
 		{
 			_data = new List<TreeViewItem<int>>();
 
@@ -89,6 +94,30 @@ namespace AkelaToolsEditor
 					}
 				}
 			}
+
+            for (var i = 0; i < scriptableObjects.Count; ++i)
+            {
+                _data.Add(new TreeViewItem<int>
+                {
+                    id = id++,
+                    icon = (Texture2D)EditorGUIUtility.IconContent("ScriptableObject Icon").image,
+                    depth = 0,
+                    displayName = $"{Path.GetFileNameWithoutExtension(scriptableObjects[i].path)} ({scriptableObjects[i].path})"
+                });
+
+                for (var k = 0; k < scriptableObjects[i].upgradableFields.Count; k++)
+                {
+                    var field = scriptableObjects[i].upgradableFields[k];
+
+                    _data.Add(new TreeViewItem<int>
+                    {
+                        id = id++,
+                        icon = (Texture2D)EditorGUIUtility.IconContent(GetIconForField(field)).image,
+                        depth = 2,
+                        displayName = $"{field.originalField} -> {field.targetField} ({field.strategy.GetType().Name})"
+                    });
+                }
+            }
 
 			Reload();
 		}
